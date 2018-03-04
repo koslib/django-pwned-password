@@ -3,7 +3,8 @@ Validate user passwords against haveibeenpwned.com database.
 
 # Disclaimer
 Think twice before using this package. Let your clients know you're testing their passwords against a 3rd-party service. Client trust
-should be your #1 priority.  
+should be your #1 priority.
+This projects only intends to highlight the need to ensure users select secure passwords, it is still a prototype and has not been tested in any production environment.  
 
 # Scope
 Restrict your Django project users from using a password that has been located even once in the haveibeenpwned.com database.
