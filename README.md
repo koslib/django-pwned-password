@@ -11,7 +11,7 @@ This package requires `requests` Python library. You can install it with
 
 1. Clone the repo inside your project
 2. In your app's settings file, locate the `AUTH_PASSWORD_VALIDATORS` and
-append the `PwnedPasswordValidator` valdiator.
+append the `PwnedPasswordValidator` validator.
 
 ```python
 {
