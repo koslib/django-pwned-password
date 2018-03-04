@@ -1,6 +1,10 @@
 # django-pwned-password
 Validate user passwords against haveibeenpwned.com database.
 
+# Disclaimer
+Think twice before using this package. Let your clients know you're testing their passwords against a 3rd-party service. Client trust
+should be your #1 priority.  
+
 # Scope
 Restrict your Django project users from using a password that has been located even once in the haveibeenpwned.com database.
 Doing this makes your project a more secure place for your clients.  
@@ -20,6 +24,10 @@ append the `PwnedPasswordValidator` validator.
 ```
 
 You can check out the `example` project to get an idea of how it works.
+
+# Credits
+1. Reddit user `Poromenos` (https://www.reddit.com/r/django/comments/81z84w/validate_user_passwords_against_haveibeenpwnedcom/)
+
 
 # Contributing
 Feel free to send any PRs or open issues with ideas for implementation.
