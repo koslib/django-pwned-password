@@ -1,21 +1,24 @@
 import requests
+import hashlib
 
 from django.core.exceptions import ValidationError
 from django.utils.translation import ugettext as _
 
 PWNED_ENDPOINT = 'https://api.pwnedpasswords.com/'
-PWNED_PASSWORD_CHECK_PATH = 'pwnedpassword/'
+PWNED_PASSWORD_CHECK_PATH = 'range/'
 
 
 class PwnedPasswordValidator(object):
 
     def _exists_as_pwned(self, password):
-        url = PWNED_ENDPOINT + PWNED_PASSWORD_CHECK_PATH + password
+        hash = hashlib.sha1(password.encode("utf8")).hexdigest().upper()
+        head, rest = hash[:5], hash[5:]
+        url = PWNED_ENDPOINT + PWNED_PASSWORD_CHECK_PATH + head
         req = requests.get(url)
-        if req.status_code == 200:
+        if rest in req.content.decode('utf-8'):
             # password found in pwned db
             return True
-        elif req.status_code >= 400:
+        else:
             return False
 
     def validate(self, password, *args, **kwargs):
